@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8"/>
+<title>This is home page</title>
+</head>
+<body>
+<br>
+	<section>
+	<h6 class="col-md-6 offset-3 text-center alert" th:if="${session.messageup}" th:classappend="${session.messageup.type}" role="alert"><p th:text="${session.messageup.content}"></p></h6>
+	<br>
+	<div class="text-center">
+	<br>
+	<h3>Update Acknowledgement</h3><br>
+	<div>
+		<a th:href="@{/viewlist}">
+			<button type="button" class="btn btn-danger col-md-4">View Employee list</button>
+		</a>
+	</div>
+	</div>
+	</section>
+</body>
+</html>

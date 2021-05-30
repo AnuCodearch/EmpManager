@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8"/>
+<title>This is home page</title>
+</head>
+<body>
+	<section>
+	<h3>This is filter page</h3>
+	<h6>we are going to decribe us </h6>
+	
+	
+	<h3 class="text-center">Employee filter list</h3>
+	 		<form th:action="@{/do_search}" th:object="${emplist}">
+				Filter:<input type="text" name="keyword" th:value="${keyword}" required>
+				<input type="submit" name="searchbtn" value="search">
+				<input type="reset" name="clearbtn" value="clear">
+			</form>
+			<br>
+	 		<table class="table table-hover">
+			  <thead class="table-dark">			
+			    <tr>
+			      <th scope="col">Name</th>
+			      <th scope="col">Email-id</th>
+			      <th scope="col">Position</th>
+			      <th scope="col">Action</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			   <tr th:each="c:${emplist}">
+			      <td th:text="${c.firstname}">hi</td>
+			      <td th:text="${c.email}">mi</td>
+			      <td th:text="${c.position}">ni</td>
+			      <td>
+			      <form method="post" th:action="@{'/emp/update/'+${c.email}}"><button type="submit" class="btn btn-warning">Edit</button></form>
+			      <a th:href="@{'/emp/delete/'+${c.email}}" type="button" class="btn btn-danger">Delete</a>
+			      </td>
+			    </tr>
+			    
+			  </tbody>
+			</table>
+	
+	
+	
+	</section>
+</body>
+</html>

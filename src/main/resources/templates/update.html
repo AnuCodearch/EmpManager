@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8"/>
+<title>This is home page</title>
+</head>
+<body>
+	 <section>
+	 <div class="container">
+		<div class="row">
+			<div class="col-md-6 offset-md-3">
+			<div th:if="${session.message}" th:classappend="${session.message.type}" class="alert text-center" role="alert">
+				<p th:text="${session.message.content}"></p>
+				<!--  <th:block th:text="${session.removeAttribute('message');}"> -->
+			</div>
+			<h3 class="text-center">Update info</h3>
+			
+			<form class="form-group" method="post"  enctype="multipart/form-data" th:action="@{/process-update}" th:object="${emp}" > 
+			<br>
+			<div class="row">
+			
+			<input type="text" placeholder="First name" name="firstname" class="form-control" th:value="${emp.firstname}" required> 
+			<input type="text" placeholder="Last name" name="lastname" class="form-control" th:value="${emp.lastname}" required><br>
+			</div>
+			<div class="row">
+			<input type="number" placeholder="Salary" name="salary" class="form-control" th:value="${emp.salary}" required><br> 
+			<input type="text" placeholder="Department" name="dept" class="form-control" th:value="${emp.dept}" required><br> 
+			</div>
+			<div class="row">
+			<input type="text" placeholder="Position" name="position" class="form-control" th:value="${emp.position}" required><br> 
+			<input type="hidden" name="email" class="form-control" th:value="${emp.email}"><br> 
+			</div>
+			<div class="row">
+			<input type="number" placeholder="Contact number" name="contact" class="form-control" th:value="${emp.contact}" required><br>
+			<input type="file" placeholder="Photo" name="photo" class="form-control"  ><br>
+			</div>
+			<div class="row">
+			<input type="password" placeholder="Password" name="password" class="form-control" th:value="${emp.password}"><br>
+			
+			
+			<div class="container text-center">
+			<br>
+				<input type="submit" value="Update" name="update" class="col-md-4 btn btn-danger" >
+				<input type="reset" value="Reset" name="reset" class="col-lg-4 offset-2 btn btn-danger" ><br><br>
+			</div>		
+			<div>
+				<a th:href="@{/viewlist}">
+					<button type="button" class="btn btn-danger col-md-12">View Employee list</button>
+				</a>
+			</div>
+		</div>
+		</form>
+			</div>
+		</div>
+	</div>
+	</section> 
+</body>
+</html>

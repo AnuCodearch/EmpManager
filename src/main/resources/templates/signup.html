@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8"/>
+<title>This is home page</title>
+</head>
+<body>
+	 <section>
+	 <div class="container">
+		<div class="row">
+			<div class="col-md-6 offset-md-3">
+			<div th:if="${session.message}" th:classappend="${session.message.type}" class="alert text-center" role="alert">
+				<p th:text="${session.message.content}"></p>
+
+			</div>
+			<h3 class="text-center">Sign up</h3>
+			
+			<form class="form-group" method="post"  enctype="multipart/form-data" th:action="@{/do_register}" th:object="${emp}" > 
+			<br>
+			<div class="row">
+			<input type="text" placeholder="First name" name="firstname" class="form-control" required> 
+			<input type="text" placeholder="Last name" name="lastname" class="form-control" required><br>
+			</div>
+			<div class="row">
+			<input type="number" placeholder="Salary (in lacs)" name="salary" class="form-control" required><br> 
+			<input type="text" placeholder="Department" name="dept" class="form-control" required><br> 
+			</div>
+			<div class="row">
+			<input type="text" placeholder="Position" name="position" class="form-control" required><br> 
+			<input type="email" placeholder="Email address" name="email" class="form-control" required><br> 
+			</div>
+			<div class="row">
+			<input type="number" placeholder="Contact number" name="contact" class="form-control" required><br>
+			<input type="file" placeholder="Photo" name="photo" class="form-control" ><br>
+			</div>
+			<div class="row">
+			<input type="password" placeholder="Password" name="password" class="form-control" ><br>
+			<input type="checkbox" class="form-check-input"  name="agreement" required> Accept Terms and Conditions<br>
+			
+			<div class="container text-center">
+			<br>
+				<input type="submit" value="SignUp" name="submit" class="col-md-4 btn btn-danger" >
+				<input type="reset" value="Reset" name="reset" class="col-lg-4 offset-2 btn btn-danger" ><br><br>
+			</div>		
+			<div>
+				<a th:href="@{/viewlist}">
+					<button type="button" class="btn btn-danger col-md-12">View Employee list</button>
+				</a>
+			</div>
+		</div>
+		</form>
+			</div>
+		</div>
+	</div>
+	</section> 
+</body>
+</html>
